@@ -4,6 +4,13 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 
+public enum State
+{
+    FALSE = 0,
+    TRUE = 1,
+    NONE = -1
+}
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,13 +24,19 @@ public class PlayerMovement : MonoBehaviour
     public Tilemap Fondation;
     private bool IsGrounded;
     private bool CanGrabWall = true;
-    public bool IsBlue;
+
+    public State IsBlue = State.NONE;
+
     public static PlayerMovement instance;
     public GameObject respawnPoint;
     //public bool IsTouched = false;
     public bool CanShoot = false;
     public bool IsDead = false;
     public bool Zoomable = true;
+
+    AudioSource DeathSound;
+    AudioSource JumpSound;
+
 
 
     [SerializeField] public Rigidbody2D rb;
@@ -43,23 +56,41 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator WaitOneFrame()
     {
-        Physics2DExtensions.AddForce(rb, new Vector2(!IsFacingRight ? 300 : -300, 698), ForceMode.Force);
+
+        Physics2DExtensions.AddForce(rb, new Vector2(!IsFacingRight ? 400 : -400, 300), ForceMode.Force);
+
         CanGrabWall = false;
         yield return new WaitForSeconds(0.3f);
         CanGrabWall = true;
     }
 
+     
+    public State ChangeState(State On) 
+    {
+        if(On == State.FALSE)
+        {
+            return State.TRUE;
+        }
+        else
+        {
+            return State.FALSE;
+        }
+    }
 
 
     private void Awake()
     {
         instance = this;
-        _Animator = GetComponent<Animator>();
+
     }
 
     void Start()
     {
-       
+
+        AudioSource[] audios = GetComponents<AudioSource>();
+        DeathSound = audios[0];
+        JumpSound = audios[1];
+
 
     }
 
@@ -86,7 +117,13 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator FadeDeath()
     {
+
+        DeathSound.Play();
         IsDead = true;
+        IsBlue = State.NONE;
+        Rouge.gameObject.SetActive(true);
+        Bleu.gameObject.SetActive(true);
+
         Imagepourlebiz.enabled = true;
         for (int i = 0; i < 101; i++)
         {
@@ -114,6 +151,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsWallDetected && IsDead == false)
         {
+
+            JumpSound.Play();
+            if (IsBlue == State.NONE)
+            {
+                ToggleColor();
+            }
+
             CanShoot = true;
             Zoomable = false;
             StartCoroutine(WaitOneFrame());
@@ -121,42 +165,70 @@ public class PlayerMovement : MonoBehaviour
 
         } else if (Input.GetButtonDown("Jump") && IsGrounded && IsDead == false)
         {
+
+            JumpSound.Play();
+            if (IsBlue == State.NONE)
+            {
+                ToggleColor();
+            }
+
             CanShoot = true;
             Zoomable = false;
             rb.velocity = new Vector2(rb.velocity.x, JumpPower);
         }
 
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+
+        /*if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
+        }*/
+
 
         Flip();
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Rouge.gameObject.active == false)
-            {
-                IsBlue = false;
-                _Animator.SetBool("isRed", !IsBlue);
-                Rouge.gameObject.SetActive(true);
-                Bleu.gameObject.SetActive(false);
-            } else
-            {
-                IsBlue = true;
-                _Animator.SetBool("isRed", !IsBlue);
-                Rouge.gameObject.SetActive(false);
-                Bleu.gameObject.SetActive(true);
-            }
+
+            ToggleColor(); 
         }
        
     }
+
+    public void ToggleColor()
+    {
+        if (IsBlue == State.NONE)
+        {
+            IsBlue = State.TRUE;
+            ToggleColor();
+        }
+        if (IsBlue == State.TRUE)
+        {
+            IsBlue = State.FALSE;
+            _Animator.SetBool("isRed", true);
+            Rouge.gameObject.SetActive(true);
+            Bleu.gameObject.SetActive(false);
+        }
+        else
+        {
+            IsBlue = State.TRUE;
+            _Animator.SetBool("isRed", false);
+            Rouge.gameObject.SetActive(false);
+            Bleu.gameObject.SetActive(true);
+        }
+    }
+
 
     private void FixedUpdate()
     {
         if(horizontal != 0 && IsDead == false)
         {
+
+            if (IsBlue == State.NONE)
+            {
+                ToggleColor();
+            }
+
             CanShoot = true;
             Zoomable = false;
         }
@@ -205,6 +277,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+
         }
     }
 

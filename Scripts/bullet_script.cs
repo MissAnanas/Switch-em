@@ -15,7 +15,9 @@ public class bullet_script : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (GetComponent<SpriteRenderer>().color == Color.red && PlayerMovement.instance.IsBlue == true)
+
+            if (GetComponent<SpriteRenderer>().color == Color.red && PlayerMovement.instance.IsBlue == State.TRUE)
+
             {
                 PlayerMovement.instance.rb.velocity = Vector3.zero;
                 PlayerMovement.instance.CanShoot = false;
@@ -28,7 +30,10 @@ public class bullet_script : MonoBehaviour
 
 
             }
-            if (GetComponent<SpriteRenderer>().color == Color.blue && PlayerMovement.instance.IsBlue == false)
+
+
+            if (GetComponent<SpriteRenderer>().color == Color.blue && PlayerMovement.instance.IsBlue == State.FALSE)
+
             {
                 PlayerMovement.instance.rb.velocity = Vector3.zero;
                 PlayerMovement.instance.CanShoot = false;

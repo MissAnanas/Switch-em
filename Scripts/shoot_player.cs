@@ -11,6 +11,9 @@ public class shoot_player : MonoBehaviour
     public LineRenderer rope;
     public float length;
 
+    public AudioSource ShotSound;
+
+
 
 
 
@@ -56,6 +59,9 @@ public class shoot_player : MonoBehaviour
                 Vector2 direction = (Vector2)target.position - myPos; //get the direction to the target
                 normalizedVector = direction.normalized;
 
+
+                ShotSound = GetComponent<AudioSource>();
+                ShotSound.Play();
                 projectile.GetComponent<Rigidbody2D>().velocity = normalizedVector * shootingPower; //shoot the bullet
             }
         }

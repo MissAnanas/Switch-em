@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
@@ -14,14 +16,37 @@ public class FollowPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(drag == false)
+
+        ///if(drag == false)
+        ///{
+        ///transform.position = Vector3.Lerp(
+        ///    transform.position,
+        ///    Target.position + Offset,
+        ///    1 / delay
+        ///    );
+        ///}
+    }
+
+    public void Start()
+    {
+        StartCoroutine(IdeeDeZinzin()); 
+    }
+
+    IEnumerator IdeeDeZinzin()
+    {
+        yield return new WaitForSeconds(0.001f);
+
+        if (drag == false)
         {
-        transform.position = Vector3.Lerp(
-            transform.position,
-            Target.position + Offset,
-            1 / delay
-            );
+            transform.position = Vector3.Lerp(
+                transform.position,
+                Target.position + Offset,
+                1 / delay
+                );
         }
+
+        StartCoroutine(IdeeDeZinzin());
+
     }
 
     private void Update()

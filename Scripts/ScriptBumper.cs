@@ -28,10 +28,18 @@ public static class Physics2DExtensions
 
 public class ScriptBumper : MonoBehaviour
 {
+
+
+    public AudioSource BumpSound;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+
+            BumpSound = GetComponent<AudioSource>();
+            BumpSound.Play();
+
             Physics2DExtensions.AddForce(PlayerMovement.instance.rb, new Vector2(PlayerMovement.instance.IsFacingRight ? 750 : -750, 472), ForceMode.Force);
         }
     }
