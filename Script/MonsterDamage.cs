@@ -8,7 +8,7 @@ public class MonsterDamage : MonoBehaviour
     public BigMonsterStomp stomp2;
     public PathSecret path;
     public PathSecret2 path2;
-    public PlayerMovement playerMovement;
+    public PlayerMovements playerMovement;
 
     public int damage;
     public PlayerHealth playerHealth;
