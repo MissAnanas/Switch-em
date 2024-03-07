@@ -81,7 +81,7 @@ public class FollowPlayer : MonoBehaviour
         else
         {
             drag = false;
-            Camera.main.orthographicSize = 5;
+            Camera.main.orthographicSize = 10;
         }
        
     }
