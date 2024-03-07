@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 5132257963796011183, guid: 416839d74f169614781396a3d23e77d8, type: 3}
       propertyPath: Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1531656476}
     - target: {fileID: 9085934967760529595, guid: 416839d74f169614781396a3d23e77d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -1220,6 +1220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background_music
       objectReference: {fileID: 0}
+    - target: {fileID: 2894954144632535466, guid: 5031d684da88aeb4fab6c9e0936f44d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5799812284602330655, guid: 5031d684da88aeb4fab6c9e0936f44d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1265,6 +1269,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5031d684da88aeb4fab6c9e0936f44d5, type: 3}
+--- !u!4 &1531656476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6993893498260291474, guid: 5ae5c96b0999b304eaeeb6948e1ec366, type: 3}
+  m_PrefabInstance: {fileID: 563291984}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1560644946
 PrefabInstance:
   m_ObjectHideFlags: 0
