@@ -35,6 +35,6 @@ public class LevelSelection : MonoBehaviour
     }
     public void Level8()
     {
-        SceneManager.LoadSceneAsync("Level 8");
+        SceneManager.LoadSceneAsync("Boss");
     }
 }

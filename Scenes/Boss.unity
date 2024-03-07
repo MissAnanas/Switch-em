@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stomp: {fileID: 660252280}
   stomp2: {fileID: 660252281}
-  path: {fileID: 820315950}
+  path: {fileID: 0}
   path2: {fileID: 1145143420}
   playerMovement: {fileID: 2083875906}
   damage: 2
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stomp: {fileID: 660252280}
   stomp2: {fileID: 660252281}
-  path: {fileID: 820315950}
+  path: {fileID: 0}
   path2: {fileID: 1145143420}
   playerMovement: {fileID: 2083875906}
   damage: 2
@@ -1726,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 1893710209}
     - target: {fileID: 6045237388308430543, guid: 5ae5c96b0999b304eaeeb6948e1ec366, type: 3}
       propertyPath: GroundLayer.m_Bits
-      value: 64
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6993893498260291474, guid: 5ae5c96b0999b304eaeeb6948e1ec366, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2056,7 +2056,6 @@ GameObject:
   m_Component:
   - component: {fileID: 488372418}
   - component: {fileID: 488372416}
-  - component: {fileID: 488372419}
   - component: {fileID: 488372420}
   m_Layer: 0
   m_Name: Enemies (3)
@@ -2126,21 +2125,6 @@ Transform:
   - {fileID: 1920192994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &488372419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488372415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5d929434d52024e9ef8e32ea8f7c2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolPoints: []
-  moveSpeed: 7
-  patrolDestination: 0
 --- !u!50 &488372420
 Rigidbody2D:
   serializedVersion: 4
@@ -2415,7 +2399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stomp: {fileID: 660252280}
   stomp2: {fileID: 660252281}
-  path: {fileID: 820315950}
+  path: {fileID: 0}
   path2: {fileID: 1145143420}
   playerMovement: {fileID: 2083875906}
   damage: 2
@@ -2880,7 +2864,6 @@ GameObject:
   - component: {fileID: 820315953}
   - component: {fileID: 820315952}
   - component: {fileID: 820315951}
-  - component: {fileID: 820315950}
   - component: {fileID: 820315955}
   - component: {fileID: 820315954}
   m_Layer: 6
@@ -2905,18 +2888,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 96178387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &820315950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820315948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 779c18c7512a3ff4e8a77499aaea155a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &820315951
 Rigidbody2D:
   serializedVersion: 4
@@ -24776,6 +24747,7 @@ GameObject:
   - component: {fileID: 1839064993}
   - component: {fileID: 1839064992}
   - component: {fileID: 1839064995}
+  - component: {fileID: 1839064996}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -24879,6 +24851,18 @@ MonoBehaviour:
   up: {fileID: 1105197023}
   down: {fileID: 872394682}
   BaseCamPos: {x: 0, y: 0, z: 0}
+--- !u!114 &1839064996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839064991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779c18c7512a3ff4e8a77499aaea155a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1893178342
 GameObject:
   m_ObjectHideFlags: 0
@@ -25064,7 +25048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stomp: {fileID: 660252280}
   stomp2: {fileID: 660252281}
-  path: {fileID: 820315950}
+  path: {fileID: 0}
   path2: {fileID: 1145143420}
   playerMovement: {fileID: 2083875906}
   damage: 2
