@@ -958,7 +958,7 @@ MonoBehaviour:
   GroundCheck: {fileID: 0}
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   WallCheck: {fileID: 0}
   WallCheckDistance: 0
   IsWallDetected: 0
