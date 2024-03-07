@@ -1528,7 +1528,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Walkspeed: 4
-  isGrounded: 0
+  input: 0
+  rb: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  jumpForce: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  feetPosition: {fileID: 0}
+  groundCheckCircle: 0
+  KBForce: 0
+  KBCounter: 0
+  KBTotalTime: 0
+  KnockFromRight: 0
+  flippedLeft: 0
+  facingRight: 0
 --- !u!66 &74496910
 CompositeCollider2D:
   m_ObjectHideFlags: 0
