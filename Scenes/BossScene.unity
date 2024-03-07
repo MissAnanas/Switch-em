@@ -226,7 +226,7 @@ MonoBehaviour:
   stomp2: {fileID: 0}
   path: {fileID: 820315950}
   path2: {fileID: 0}
-  playerMovement: {fileID: 202819663}
+  playerMovement: {fileID: 0}
   damage: 2
   playerHealth: {fileID: 202819669}
 --- !u!70 &39626515
@@ -564,7 +564,7 @@ MonoBehaviour:
   stomp2: {fileID: 0}
   path: {fileID: 820315950}
   path2: {fileID: 0}
-  playerMovement: {fileID: 202819663}
+  playerMovement: {fileID: 0}
   damage: 2
   playerHealth: {fileID: 202819669}
 --- !u!212 &170639484
@@ -701,7 +701,6 @@ GameObject:
   - component: {fileID: 202819665}
   - component: {fileID: 202819664}
   - component: {fileID: 202819670}
-  - component: {fileID: 202819663}
   - component: {fileID: 202819669}
   m_Layer: 0
   m_Name: Player
@@ -710,34 +709,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &202819663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202819662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 854b027446d7e674883dfdea8a825c84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Walkspeed: 10
-  input: 0
-  rb: {fileID: 202819666}
-  spriteRenderer: {fileID: 202819667}
-  jumpForce: 30
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  feetPosition: {fileID: 1185521676}
-  groundCheckCircle: 0.3
-  KBForce: 10
-  KBCounter: 0
-  KBTotalTime: 0.2
-  KnockFromRight: 0
-  flippedLeft: 0
-  facingRight: 0
 --- !u!66 &202819664
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -958,7 +929,7 @@ MonoBehaviour:
   GroundCheck: {fileID: 0}
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   WallCheck: {fileID: 0}
   WallCheckDistance: 0
   IsWallDetected: 0
@@ -2733,7 +2704,7 @@ MonoBehaviour:
   stomp2: {fileID: 660252281}
   path: {fileID: 820315950}
   path2: {fileID: 1145143420}
-  playerMovement: {fileID: 202819663}
+  playerMovement: {fileID: 0}
   damage: 2
   playerHealth: {fileID: 202819669}
 --- !u!212 &612717210
@@ -26414,7 +26385,7 @@ MonoBehaviour:
   stomp2: {fileID: 0}
   path: {fileID: 820315950}
   path2: {fileID: 0}
-  playerMovement: {fileID: 202819663}
+  playerMovement: {fileID: 0}
   damage: 2
   playerHealth: {fileID: 202819669}
 --- !u!212 &1920192998
@@ -26575,7 +26546,7 @@ GameObject:
   - component: {fileID: 2129962181}
   - component: {fileID: 2129962180}
   - component: {fileID: 2129962179}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: fondation
   m_TagString: Ground
   m_Icon: {fileID: 0}

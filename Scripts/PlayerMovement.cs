@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public enum State
 {
@@ -45,8 +46,17 @@ public class PlayerMovement : MonoBehaviour
 
     public Image Imagepourlebiz;
     float alphaFadeValue = 0.0f;
-
     public Animator _Animator;
+
+    //Anaïs
+    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+
+    public bool KnockFromRight;
+    public bool flippedLeft;
+    public bool facingRight;
+    public float input;
 
     IEnumerator WaitOneFrame()
     {
@@ -220,9 +230,26 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(horizontal * speed, rb.velocity.y), Time.deltaTime);
             }
-            
         }
-        
+
+        if (KBCounter <= 0)
+        {
+            rb.velocity = new Vector2(input * speed, rb.velocity.y);
+        }
+        else
+        {
+            if (KnockFromRight == true)
+            {
+                rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            if (KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KBForce, KBForce);
+            }
+
+            KBCounter -= Time.deltaTime;
+        }
+
     }
 
     private void OnDrawGizmos()
