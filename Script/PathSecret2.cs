@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PathSecret2 : MonoBehaviour
 {
-    public void DestroyPath2(int ennemiesCount)
+    public void DestroyPath2(int ennemiesCount2)
     {
-        if (ennemiesCount <= 0)
+        if (ennemiesCount2 <= 0)
         {
             Destroy(gameObject);
         }

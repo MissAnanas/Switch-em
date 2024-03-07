@@ -223,9 +223,11 @@ public class PlayerMovement : MonoBehaviour
         {
             IsWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.2f);
-        } else
+        }
+        else
         {
             IsWallSliding = false;
+            //Movement
             if (IsDead == false)
             {
                 rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(horizontal * speed, rb.velocity.y), Time.deltaTime);
@@ -234,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (KBCounter <= 0)
         {
-            rb.velocity = new Vector2(input * speed, rb.velocity.y);
+            //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
         }
         else
         {
