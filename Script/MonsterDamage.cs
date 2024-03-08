@@ -5,9 +5,7 @@ using UnityEngine;
 public class MonsterDamage : MonoBehaviour
 {
     public MonsterStomp stomp;
-    public BigMonsterStomp stomp2;
     public PathSecret path;
-    public PathSecret2 path2;
     public PlayerMovement playerMovement;
 
     public int damage;
@@ -33,8 +31,6 @@ public class MonsterDamage : MonoBehaviour
     {
         stomp.ennemiesCount -= 1;
         path.DestroyPath(stomp.ennemiesCount);
-        stomp2.ennemiesCount2 -= 1;
-        path2.DestroyPath2(stomp2.ennemiesCount2);
     }
 
 
