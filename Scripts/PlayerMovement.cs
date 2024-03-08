@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public enum State
 {
@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     public bool flippedLeft;
     public bool facingRight;
     public float input;
+    public int SceneIndex;
 
     IEnumerator WaitOneFrame()
     {
@@ -65,10 +66,10 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         CanGrabWall = true;
     }
-     
-    public State ChangeState(State On) 
+
+    public State ChangeState(State On)
     {
-        if(On == State.FALSE)
+        if (On == State.FALSE)
         {
             return State.TRUE;
         }
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
+
     }
 
     void Start()
@@ -94,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collisionbis)
     {
-        
+
         if (collisionbis.gameObject.CompareTag("DieZone"))
         {
             rb.velocity = Vector3.zero;
@@ -104,9 +105,20 @@ public class PlayerMovement : MonoBehaviour
             //StartCoroutine(DeathFrame());
             StartCoroutine(FadeDeath());
             rb.transform.position = respawnPoint.transform.position;
-            
+
+        }
+
+        if (collisionbis.gameObject.CompareTag("Exit"))
+        {
+            rb.velocity = Vector3.zero;
+            CanShoot = false;
+            Zoomable = true;
+            StartCoroutine(FadeExit());
+            //StartCoroutine(FadeEnter());
         }
     }
+
+
 
     public void CallFadeDeath()
     {
@@ -138,8 +150,44 @@ public class PlayerMovement : MonoBehaviour
         IsDead = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator FadeExit()
+    {
+        DeathSound.Play();
+        IsDead = true;
+        Imagepourlebiz.enabled = true;
+        for (int i = 0; i < 101; i++)
+        {
+            alphaFadeValue = ((float)i / 100);
+            Imagepourlebiz.color = new Color(0, 0, 0, alphaFadeValue);
+            yield return new WaitForSeconds(0.005f);//0.005f
+        }
+        yield return new WaitForSeconds(0.4f);//0.4f
+
+        SceneManager.LoadScene(SceneIndex += 1, LoadSceneMode.Single);
+        IsDead = false;
+    }
+
+    /*public IEnumerator FadeEnter()
+    {
+        DeathSound.Play();
+        IsDead = true;
+        Imagepourlebiz.enabled = true;
+        for (int i = 0; i < 101; i++)
+            {
+            alphaFadeValue = 1 - ((float)i / 100);
+            Imagepourlebiz.color = new Color(0, 0, 0, alphaFadeValue);
+            yield return new WaitForSeconds(0.005f);//0.005f
+        }
+        yield return new WaitForSeconds(0.4f);//0.4f
+
+        Imagepourlebiz.enabled = false;
+        IsDead = false;
+    }*/
+
+
+
+// Update is called once per frame
+void Update()
     {
 
         CollisionCheck();
