@@ -30,13 +30,24 @@ public class ScriptBumper : MonoBehaviour
 {
 
     public AudioSource BumpSound;
+    private Animator _isBumping;
+
+    private void Start()
+    {
+        _isBumping = GetComponentInChildren<Animator>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             BumpSound = GetComponent<AudioSource>();
-            BumpSound.Play();
+            //BumpSound.Play();
             Physics2DExtensions.AddForce(PlayerMovement.instance.rb, new Vector2(PlayerMovement.instance.IsFacingRight ? 750 : -750, 472), ForceMode.Force);
+            //_isBumping.SetTrigger("isBumping");
         }
     }
 }
+
+
+
