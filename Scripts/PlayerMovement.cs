@@ -137,14 +137,14 @@ public class PlayerMovement : MonoBehaviour
         {
             alphaFadeValue = ((float)i / 100);
             Imagepourlebiz.color = new Color(255, 255, 255, alphaFadeValue);
-            yield return new WaitForSeconds(0.005f);//0.005f
+            yield return new WaitForSeconds(0.004f);//0.005f
         }
-        yield return new WaitForSeconds(0.4f);//0.4f
+        yield return new WaitForSeconds(0.3f);//0.4f
         for (int i = 0; i < 101; i++)
         {
             alphaFadeValue = 1 - ((float)i / 100);
             Imagepourlebiz.color = new Color(255, 255, 255, alphaFadeValue);
-            yield return new WaitForSeconds(0.005f);//0.005f
+            yield return new WaitForSeconds(0.004f);//0.005f
         }
         Imagepourlebiz.enabled = false;
         IsDead = false;
