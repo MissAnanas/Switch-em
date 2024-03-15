@@ -30,11 +30,15 @@ public class ScriptBumper : MonoBehaviour
 {
 
     public AudioSource BumpSound;
-    private Animator _isBumping;
+    private Animator[] _isBumping;
 
     private void Start()
     {
-        _isBumping = GetComponentInChildren<Animator>();
+        _isBumping = new Animator[transform.childCount];
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            _isBumping[i] = transform.GetChild(i).GetComponent<Animator>();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,7 +48,10 @@ public class ScriptBumper : MonoBehaviour
             BumpSound = GetComponent<AudioSource>();
             //BumpSound.Play();
             Physics2DExtensions.AddForce(PlayerMovement.instance.rb, new Vector2(PlayerMovement.instance.IsFacingRight ? 750 : -750, 472), ForceMode.Force);
-            //_isBumping.SetTrigger("isBumping");
+            foreach (Animator animator in _isBumping)
+            {
+                animator.SetTrigger("isBumping");
+            }
         }
     }
 }
